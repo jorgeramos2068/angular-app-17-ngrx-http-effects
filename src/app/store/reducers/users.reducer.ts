@@ -10,7 +10,7 @@ export interface UsersState {
   error: any;
 }
 
-export const initialState: UsersState = {
+export const usersInitialState: UsersState = {
   users: [],
   loaded: false,
   loading: false,
@@ -18,7 +18,7 @@ export const initialState: UsersState = {
 };
 
 const _usersReducer = createReducer(
-  initialState,
+  usersInitialState,
   on(actions.loadUsers, (state) => ({
     ...state,
     loading: true,
