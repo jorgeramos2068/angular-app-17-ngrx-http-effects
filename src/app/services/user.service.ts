@@ -6,13 +6,19 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class UserService {
-  private url: string = 'https://reqres.in/api1';
+  private url: string = 'https://reqres.in/api';
 
   constructor(private http: HttpClient) {}
 
   getUsers() {
     return this.http
       .get(`${this.url}/users`)
+      .pipe(map((resp: any) => resp['data']));
+  }
+
+  getUserById(id: string) {
+    return this.http
+      .get(`${this.url}/users/${id}`)
       .pipe(map((resp: any) => resp['data']));
   }
 }
